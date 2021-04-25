@@ -1,0 +1,17 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>Game</title><link rel="stylesheet" href="main.css"><style></style></head><body><div class="row row__jc-sa"><canvas id="game" width="600" height="600"></canvas><div class="highscores" id="scores"><h2>Highscores</h2></div></div><div class="game-over"><div class="border column column__ai-c"><h1>game over</h1><p class="row row__ai-c"><span class="sc"><span>S</span> <span>c</span> <span>o</span> <span>r</span> <span>e</span> <span>:</span> </span><span id="scoreCounter">40</span></p><button class="button button__mod-1" onclick="restart();">restart</button> <button class="button button__mod-2" onclick="showWindowAddScore();">add score</button> <button class="button button__mod-3" onclick="showThemes();">Theme</button></div></div><div class="add-score-block"><form name="ss" method="POST"><div class="row row__jc-c"><h1>add score</h1></div><div class="field field__apple-mod row row__jc-c row__ai-c"><p>Name:</p><input type="text" name="nik" placeholder="Name"></div><input type="hidden" name="score" id="scoreInput"><p class="row row_ai-c row_jc-c"><span class="sc"><span>S</span> <span>c</span> <span>o</span> <span>r</span> <span>e</span> <span>:</span> </span><span id="scoreCounter2"></span></p><input type="submit" class="button button__mod-1" value="Send!"></form></div><div class="mobile"><p>Доступна только десктоп версия игры</p><p>Мобильная в разработке!</p></div><div class="theme-choice" id="themesBox"></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script><script src="main.js"></script><script>const form = document.forms.ss;
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const query = [];
+            const API_URL = 'http://localhost:3000/setScore?';
+            for (const [key, value] of new FormData(form).entries()) {
+                query.push(`${key}=${value}`);
+            }
+            const queryString = `${API_URL}${query.join('&')}`;
+            console.log(queryString);
+            fetch(queryString, {
+                method: 'POST',
+            }).then(() => {
+                location.reload();
+            });
+            return false;
+        });</script></body></html>
