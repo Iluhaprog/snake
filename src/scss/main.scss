@@ -1,0 +1,77 @@
+@import 'variables';
+@import 'base_styles';
+
+body {
+    margin: 0;
+    padding: 0;
+}    
+canvas {
+    display: block;
+    margin-left: 16px;
+    max-height: 600px;
+    margin-top: calc(50vh - 300px);
+}
+
+.game-over {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: -100vh;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    transition: .7s ease-in-out;
+}
+  
+.game-over__show {
+    top: 0;
+}
+  
+.add-score-block {
+    position: fixed;
+    left: -60%;
+    top: 0;
+}
+  
+.add-score-block__show {
+    left: 0;
+}
+
+
+.theme-choice {
+  position: fixed;
+  top: -100vh;
+  left: 0;
+  background: #fff;
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+  transition: .3s ease-in-out;
+
+  &__show {
+    top: 0;
+  } 
+}
+  
+.mobile {
+    display: none;
+  }
+  
+  @media screen and (max-width: 1090px) {
+    div, canvas{
+      display: none;
+    }
+    .mobile {
+      display: block !important;
+      margin: 0 auto;
+      max-width: 600px;
+      text-align: center;
+    }
+  
+    .mobile p {
+      font-size: 24px;
+    }
+  }
+
+  @import 'choiceThemes';
