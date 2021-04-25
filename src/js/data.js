@@ -4,7 +4,7 @@
  function getScores() {
     $.ajax({
         type: 'GET',
-        url:  'http://157.230.98.200/snake/scores',
+        url:  'https://157.230.98.200/scores',
     }).done(function(result) {
         scores.innerHTML += "<div>" + result + "</div>";
     }).fail(function (jqXHR, exception) {
