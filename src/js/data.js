@@ -4,7 +4,7 @@
  function getScores() {
     $.ajax({
         type: 'GET',
-        url:  'http://localhost:3000/scores',
+        url:  'https://157.230.98.200/scores',
     }).done(function(result) {
         scores.innerHTML += "<div>" + result + "</div>";
     }).fail(function (jqXHR, exception) {
