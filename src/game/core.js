@@ -1,10 +1,4 @@
-import {
-	SNAKE_COLOR,
-	SNAKE_HEAD_COLOR,
-	EAT_COLOR,
-	CELL_COLOR,
-	BACKGROUND_COLOR,
-} from "./color-schemes";
+import { themes } from "./themes";
 
 const sizes = {
 	field: {
@@ -50,6 +44,12 @@ let now;
 let then;
 let elapsed;
 
+let currentTheme = null;
+
+export function selectTheme(themeName) {
+	currentTheme = themes.find((element) => element.name === themeName);
+}
+
 /**
  *
  * @param {HTMLCanvasElement} canvas
@@ -58,7 +58,7 @@ export function initCanvas(canvas) {
 	canvas.classList.add("game-field");
 	canvas.width = sizes.field.width;
 	canvas.height = sizes.field.height;
-	canvas.style.backgroundColor = BACKGROUND_COLOR;
+	canvas.style.backgroundColor = currentTheme.backgroundColor;
 }
 
 /**
@@ -201,30 +201,26 @@ function drawEat(context) {
 function drawCell({
 	context, x, y, type = CELL,
 }) {
+	const params = {
+		context, x, y, sizes,
+	};
 	switch (type) {
 	case SNAKE_HEAD:
-		context.fillStyle = SNAKE_HEAD_COLOR;
+		currentTheme.snakeHead(params);
 		break;
 	case SNAKE_SEGMENT:
-		context.fillStyle = SNAKE_COLOR;
+		currentTheme.snakeSegment(params);
 		break;
 	case EAT:
-		context.fillStyle = EAT_COLOR;
+		currentTheme.eat(params);
 		break;
 	case CELL:
-		context.fillStyle = CELL_COLOR;
+		currentTheme.cell(params);
 		break;
 	default:
-		context.fillStyle = CELL_COLOR;
+		currentTheme.cell(params);
 		break;
 	}
-
-	context.fillRect(
-		x * sizes.cell.width + sizes.gap,
-		y * sizes.cell.height + sizes.gap,
-		sizes.cell.width - sizes.gap - sizes.gap,
-		sizes.cell.height - sizes.gap - sizes.gap,
-	);
 }
 
 /**
