@@ -1,17 +1,19 @@
-import { initCanvas, init, selectTheme } from "./game/core";
-import "./styles/styles.css";
+import { initCanvas, init, changeTheme } from "./game/core";
+import { changeScore } from "./game/score";
+import { changeUITheme } from "./game/ui";
+import "./styles/index.scss";
 
 const root = document.getElementById("root");
-const scoreBox = document.getElementById("score");
 
 const canvas = document.createElement("canvas");
 const context = canvas.getContext("2d");
-const EAT_PRICE = 100;
-let score = 0;
+const theme = "default";
 
 if (context) {
 	root.appendChild(canvas);
-	selectTheme("default");
+
+	changeUITheme(theme);
+	changeTheme(theme);
 	initCanvas(canvas);
 	init({
 		context,
@@ -19,7 +21,8 @@ if (context) {
 	});
 }
 
+const SCORE_CHANGE = 100;
+
 function onEatCollision() {
-	score += EAT_PRICE;
-	scoreBox.innerText = `Score: ${score}`;
+	changeScore(SCORE_CHANGE);
 }

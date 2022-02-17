@@ -13,8 +13,12 @@
   <% } %>
 </head>
 <body>
-  <div id="score">Score: 0</div>
-  <div id="root"></div>
+
+  <section id="wrapper">
+    <div id="score">Score: 0</div>
+    <div id="root"></div>
+  </section>
+
   <% for (const js in htmlWebpackPlugin.files.js) { %>
     <script src="<%= htmlWebpackPlugin.files.js %>"></script>
   <% } %>

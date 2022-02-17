@@ -46,7 +46,7 @@ let elapsed;
 
 let currentTheme = null;
 
-export function selectTheme(themeName) {
+export function changeTheme(themeName) {
 	currentTheme = themes.find((element) => element.name === themeName);
 }
 
@@ -55,7 +55,8 @@ export function selectTheme(themeName) {
  * @param {HTMLCanvasElement} canvas
  */
 export function initCanvas(canvas) {
-	canvas.classList.add("game-field");
+	canvas.className = "";
+	canvas.classList.add(`game-field-${currentTheme.name}`);
 	canvas.width = sizes.field.width;
 	canvas.height = sizes.field.height;
 	canvas.style.backgroundColor = currentTheme.backgroundColor;
