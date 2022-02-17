@@ -14,9 +14,34 @@
 </head>
 <body>
 
-  <section id="wrapper">
+  <template id="game">
     <div id="score">Score: 0</div>
     <div id="root"></div>
+  </template>
+
+  <template id="menu">
+    <menu class="menu">
+      <h1>
+        IN_SNAKE
+      </h1>
+      <div class="column column_jc-c column_ai-c">
+        <button class="btn" id="start-btn">Start</button>
+        <button class="btn" id="theme-btn">Theme</button>
+        <button class="btn" id="settings-btn">Settings</button>
+      </div>
+    </menu>
+  </template>
+
+  <template id="theme">
+
+  </template>
+
+  <template id="settings">
+    
+  </template>
+
+  <section id="wrapper">
+    <div id="box" data-show="false"></div>
   </section>
 
   <% for (const js in htmlWebpackPlugin.files.js) { %>

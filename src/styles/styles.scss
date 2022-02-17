@@ -3,7 +3,6 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #F3EDE9;
 }
 
 #root {
@@ -22,20 +21,31 @@ body {
     padding-top: 40px;
 }
 
-.menu-wrapper {
-    height: 100vh;
-    position: absolute;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.visible {
+    visibility: visible;
 }
 
-.menu-wrapper[data-view="false"] {
-    top: -100vh;
+.hidden {
+    visibility: hidden;
 }
 
-.menu-wrapper[data-view="true"] {
-    top: 0;
+@mixin flex($name) {
+    .#{$name} {
+        display: flex;
+        flex-direction: column;
+        &_jc {
+            &-c {
+                justify-content: center;
+            }
+        }
+
+        &_ai {
+            &-c {
+                align-items: center;
+            }
+        }
+    }
 }
+
+@include flex(column);
+@include flex(row);

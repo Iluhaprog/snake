@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 import { themes } from "./themes";
 
 const sizes = {
@@ -12,7 +13,7 @@ const sizes = {
 	gap: 0.1,
 };
 
-const FPS = 5;
+let FPS = 5;
 const TIME_FRAMERATE = 1000;
 
 const horizontalLength = sizes.field.width / sizes.cell.width;
@@ -46,6 +47,8 @@ let elapsed;
 
 let currentTheme = null;
 
+setupKeyPressing();
+
 export function changeTheme(themeName) {
 	currentTheme = themes.find((element) => element.name === themeName);
 }
@@ -56,10 +59,16 @@ export function changeTheme(themeName) {
  */
 export function initCanvas(canvas) {
 	canvas.className = "";
-	canvas.classList.add(`game-field-${currentTheme.name}`);
 	canvas.width = sizes.field.width;
 	canvas.height = sizes.field.height;
 	canvas.style.backgroundColor = currentTheme.backgroundColor;
+}
+
+export function drawLoadingText(context) {
+	context.font = `26px ${currentTheme.font}`;
+	context.fillStyle = currentTheme.fontColor;
+	// eslint-disable-next-line no-magic-numbers
+	context.fillText("Loading...", sizes.field.width / 2 - 50, sizes.field.height / 2 - 13);
 }
 
 /**
@@ -67,8 +76,6 @@ export function initCanvas(canvas) {
  * @param {CanvasRenderingContext2D} context
  */
 export function init({ context, onEatCollision, onCollision }) {
-	setupKeyPressing();
-
 	snakeBody.push({
 		x: getRandomInt(INDENT, horizontalLength - INDENT),
 		y: getRandomInt(INDENT, verticalLength - INDENT),
@@ -129,6 +136,7 @@ function run(context, onEatCollision, onCollision) {
 			context,
 			onCollision: () => {
 				isGameOver = true;
+				onEndGame(context);
 				onCollision();
 			},
 			onEatCollision: () => {
@@ -138,15 +146,34 @@ function run(context, onEatCollision, onCollision) {
 			onMove: redrawCell,
 		});
 	}
+
 	if (!isGameOver) {
 		drawSnake(context);
 		window.requestAnimationFrame(() => run(context, onEatCollision, onCollision));
 	}
 }
 
+function onEndGame(context) {
+	context.clearRect(0, 0, sizes.field.width, sizes.field.height);
+	snakeBody.length = 0;
+	step = 0;
+	FPS = 5;
+	directionQueue.length = 0;
+	fpsInterval = undefined;
+	now = undefined;
+	then = undefined;
+	elapsed = undefined;
+}
+
 function eat(context) {
 	generateEat();
 	drawEat(context);
+	increaseComplexity();
+}
+
+function increaseComplexity() {
+	FPS += FPS * 0.05;
+	fpsInterval = TIME_FRAMERATE / FPS;
 }
 
 function changeDirection() {

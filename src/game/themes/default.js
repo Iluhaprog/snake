@@ -5,13 +5,15 @@ export const defaultTheme = {
 	snakeHead,
 	snakeSegment,
 	cell,
-	backgroundColor: "#7C7669",
+	backgroundColor: "#4B558A",
+	font: "IndieFlower-Regular",
+	fontColor: "#E3E2CC",
 };
 
-export const SNAKE_COLOR = "#AA977C";
-export const SNAKE_HEAD_COLOR = "#5C5C5A";
-export const EAT_COLOR = "#F5C40C";
-export const CELL_COLOR = "#F3EDE9";
+export const SNAKE_COLOR = "#41C7DC";
+export const SNAKE_HEAD_COLOR = "#4B558A";
+export const EAT_COLOR = "#D6522B";
+export const CELL_COLOR = "#E3E2CC";
 
 function eat(params) {
 	const { context } = params;
