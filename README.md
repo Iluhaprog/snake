@@ -47,6 +47,7 @@
 2. I must use **webpack** for build project.
 3. I must try **docker** for deploy it.
 4. I must write the simple backend with **nodejs** and **sqlite**, but without a libraries for routing, just HTTP.
+5. I can try to integrate Feature-Sliced Design.
 ### Structure of theme in frontend
 
 ```javascript
