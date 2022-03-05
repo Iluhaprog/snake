@@ -12,7 +12,7 @@
 <body>
   <div id="root"></div>
   <% for (const js in htmlWebpackPlugin.files.js) { %>
-  <script src="<%= htmlWebpackPlugin.files.js %>"></script>
+  <script src="<%= htmlWebpackPlugin.files.js %>" type="module"></script>
   <% } %>
 </body>
 </html>
