@@ -9,7 +9,7 @@
   "private": true,
   "scripts": {
     "start:dev": "webpack serve --open --config webpack.dev.js",
-    "start:test": "jest",
+    "start:test": "jest --watchAll --env=jsdom",
     "build:prod": "webpack --config webpack.prod.js"
   },
   "devDependencies": {
