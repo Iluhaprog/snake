@@ -17,6 +17,10 @@ module.exports = {
 	module: {
 		rules: [
 			{
+				test: /\.js$/i,
+				use: "babel-loader",
+			},
+			{
 				test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
 				type: "asset/resource",
 			},
