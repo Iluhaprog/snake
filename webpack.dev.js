@@ -9,6 +9,7 @@ module.exports = merge(common, {
 
 	output: {
 		path: path.resolve(__dirname, "dist/dev"),
+		publicPath: "/",
 	},
 
 	module: {
@@ -33,6 +34,8 @@ module.exports = merge(common, {
 		devMiddleware: {
 			writeToDisk: true,
 		},
+
+		historyApiFallback: true,
 
 		port: 3000,
 	},
