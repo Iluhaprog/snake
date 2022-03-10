@@ -1,14 +1,6 @@
+import { getTemplates } from "./helpers";
 import { NoRootIdError } from "../errors/NoRootIdError";
 import { NoTemplateError } from "../errors/NoTemplateError";
-
-function getTemplates(ids) {
-	if (!ids.length) return [];
-
-	return ids.reduce((prev, templateId) => ({
-		...prev,
-		[templateId]: document.getElementById(templateId),
-	}), {});
-}
 
 export class TemplateManager {
 	#templates = {};
