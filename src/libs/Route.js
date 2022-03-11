@@ -53,6 +53,8 @@ export class Route {
 			const path = window.location.pathname;
 			if (path === "/") {
 				change(defaultPath);
+			} else {
+				change(path);
 			}
 		});
 	}

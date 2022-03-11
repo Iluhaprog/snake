@@ -10,7 +10,44 @@
   <% } %>
 </head>
 <body>
-  <div id="root"></div>
+
+  <template id="home-template">
+    <div class="box column column_ai-c column_jc-c">
+      <button class="btn" id="home-start-btn">Start</button>
+      <button class="btn" id="home-themes-btn">Theme</button>
+      <button class="btn" id="home-leaders-btn">Leaders</button>
+      <button class="btn" id="home-add-score-btn">Add Score</button>
+    </div>
+  </template>
+  
+  <template id="themes-template">
+    <div id="themes-header">
+      Themes
+    </div>
+  </template>
+  
+  <template id="leaders-template">
+    <div id="leaders-header">
+      Leaders
+    </div>
+  </template>
+  
+  <template id="game-template">
+    <div class="column column_jc-c column_ai-c">
+      <button id="back-btn">Back</button>
+      <h3 class="score" id="score">game</h3>
+      <canvas id="game-canvas"></canvas>
+    </div>
+  </template>
+
+  <template id="add-score-template">
+    <div id="add-score-header">add score</div>
+  </template>
+
+  <main class="wrapper" id="wrapper" data-theme="default">
+    <div id="root" class="hidden"></div>
+  </main>
+
   <% for (const js in htmlWebpackPlugin.files.js) { %>
   <script src="<%= htmlWebpackPlugin.files.js %>" type="module"></script>
   <% } %>

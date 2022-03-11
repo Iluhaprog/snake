@@ -1,0 +1,71 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+}
+
+.visible {
+  transform: translateY(0);
+}
+
+.hidden {
+  transform: translateY(-100vh);
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  transition: all 500ms ease-in-out;
+}
+
+@mixin flexElement($direction) {
+  .#{$direction} {
+    display: flex;
+    flex-direction: $direction;
+    
+    &_jc {
+      &-c {
+        justify-content: center;
+      }
+
+      &-fs {
+        justify-content: flex-start;
+      }
+
+      &-fe {
+        justify-content: end;
+      }
+
+      &-sb {
+        justify-content: space-between
+      }
+    }
+
+    &_ai {
+      &-c {
+        align-items: center;
+      }
+
+      &-fs {
+        align-items: flex-start;
+      }
+
+      &-fe {
+        align-items: flex-end;
+      }
+    }
+  }
+}
+
+@include flexElement(row);
+@include flexElement(column);
+
+@import "../themes/default/styles/index.scss";
