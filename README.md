@@ -33,3 +33,13 @@
     /* some styles */
   }
 ```
+
+### TO-DO:
+1. ~~Write UI management setup~~
+2. Write game
+3. ~~Write setup for home screen~~
+4. Write setup for themes screen
+5. Write setup for leaders screen
+6. Write setup for add score screen
+7. Write setup for game screen
+
