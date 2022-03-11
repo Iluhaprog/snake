@@ -19,7 +19,7 @@
   "cell": {
     "draw": function ({context, x, y, size}) {},
     "isDynamic": false,
-  }
+  },
   "eat": {
     "draw": function ({context, x, y, size}) {},
     "isDynamic": false,
