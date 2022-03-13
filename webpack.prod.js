@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const path = require("path");
 const { merge } = require("webpack-merge");
+const Dotenv = require("dotenv-webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const common = require("./webpack.common");
 
@@ -31,6 +32,10 @@ module.exports = merge(common, {
 		new MiniCssExtractPlugin({
 			filename: "[name].[fullhash].css",
 			chunkFilename: "[id].[chunkhash].css",
+		}),
+
+		new Dotenv({
+			path: "./.env.prod",
 		}),
 	],
 });
